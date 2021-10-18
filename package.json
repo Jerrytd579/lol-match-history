@@ -1,0 +1,24 @@
+{
+  "name": "lol-match-history",
+  "version": "1.0.0",
+  "description": "League of Legends match history analyzer",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jerrytd579/lol-match-history.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jerrytd579/lol-match-history/issues"
+  },
+  "homepage": "https://github.com/Jerrytd579/lol-match-history#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4"
+  }
+}
