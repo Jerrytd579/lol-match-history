@@ -1,7 +1,6 @@
 const { RiotAPI, PlatformId} = require('@fightmegg/riot-api')
 const {strValid, regValid} = require('./util')
 const {apikey} = require('./config.json')
-const {axios} = require('axios')
 
 let getSummonerByName = async (summonerName, region) => {
     if (!strValid(summonerName) || !regValid(region))  
@@ -16,8 +15,6 @@ let getSummonerByName = async (summonerName, region) => {
         });
         return summoner;
     } catch (e) { return e;}
-
-    if (!summoner) throw Error("Summoner not found")
 }
 
 let getMatchlistByAccount = async (puuid, cluster) => {
@@ -32,7 +29,19 @@ let getMatchlistByAccount = async (puuid, cluster) => {
     } catch (e) { return e; }
 }
 
+// wraps around the above two functions
+let getMatchlistBySummoner = async (summonerName, region) => {
+    if (!strValid(summonerName) || !regValid(region))
+        throw TypeError(`Invalid summoner name or region: (${summonerName}, ${region}))`);
+    
+    const summoner = await getSummonerByName(summonerName, region);
+    const matchList = await getMatchlistByAccount(summoner.puuid, PlatformId.AMERICAS);
+
+    return matchList;
+}
+
 module.exports = {
     getSummonerByName,
-    getMatchlistByAccount
+    getMatchlistByAccount,
+    getMatchlistBySummoner
 }
