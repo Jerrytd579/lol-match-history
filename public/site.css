@@ -50,3 +50,33 @@
       monospace;
   }
     
+  @media (min-width: 320px) {
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial';
+    }
+
+    body{
+        background-color: #f7feff;
+    }
+
+    ul{
+        list-style: none;
+    }
+    .btn{
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.5s;
+        letter-spacing: 2px;
+    }
+    .btn:hover{
+            letter-spacing: 4px;
+            background-color: white;
+            color: #333;
+        }
+   
+  }
