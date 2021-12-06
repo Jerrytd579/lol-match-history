@@ -1,31 +1,30 @@
-import React, { useState, useHistory } from 'react';
-import {withRouter} from 'react-router-dom'
-const {getMatchlistBySummoner} = require('../data')
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const SummonerSearch = async () => {
+const HOST = "http://localhost:3000";
 
-    let history = useHistory();
+const SummonerSearch = () => {
+    let navigate = useNavigate();
+    let [summonerName, setSummonerName] = useState("");
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        try {
-            const matchIds = await getMatchlistBySummoner(evt.target.value);
-            // redirect to matchlist
-            history.push({
-                pathname: '/matchList',
-                state: {matchIds}
-            });
-        } catch (e) {
-            console.log(e);
-        }
+        navigate(`/matchList/${summonerName}`);
     };
+
     
     return (
         <div id="summonerSearch">
-            <form onSubmit={handleSubmit}>
+            <form onChange={e => 
+                {
+                    setSummonerName(e.target.value);
+                    console.log(summonerName);
+                }}
+            onSubmit={(e) => handleSubmit(e)}>
                 <label>
-                    Summoner name
-                    <input type="text" value="Summoner name..."/>
+                    Summoner name <br/>
+                    <input type="text" id="summonerName"/>
                 </label>
                 <input type="submit" value="Submit"/>
             </form>
@@ -34,9 +33,9 @@ const SummonerSearch = async () => {
 };
 
 const Home = () => {
-    return <div className="home">
+    return (<div className="home">
         <SummonerSearch />
-    </div>;
+    </div>);
 };
 
 export default Home;

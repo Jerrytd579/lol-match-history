@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+label[for="summonerName"] {
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -26,6 +30,8 @@
 }
 
 .home {
+    display: flex;
+    justify-content: center;
     background-color: #519BAE; 
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }

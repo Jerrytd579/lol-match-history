@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -20,11 +19,11 @@ function App() {
             </p>
         </header>
         </div>
-    <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/matchList/" element = {<MatchList />} />
-        <Route path="*" element = {<Error err="Page not found" />} />
-    </Routes>
+      <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/matchList/:summonerName" element = {<MatchList />} />
+          <Route path="*" element = {<Error err="Page not found" />} />
+      </Routes>
     </Router>
   );
 };
