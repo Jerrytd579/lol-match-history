@@ -14,7 +14,10 @@ let getSummonerByName = async (summonerName, region=PlatformId.NA1) => {
             summonerName: summonerName 
         });
         return summoner;
-    } catch (e) { return e;}
+    } catch (e) { 
+        if (e.response && e.response.status === 403)
+            throw Error("403: expired API key");
+        throw Error(`${e.response ? e.response.status : 500}: getSummonerByName failed`);}
 };
 
 let getMatchlistByPuuid = async (puuid, cluster) => {
@@ -27,7 +30,11 @@ let getMatchlistByPuuid = async (puuid, cluster) => {
             puuid,
             cluster});
         return matchList;
-    } catch (e) { console.log(e) };
+    } catch (e) { 
+        if (e.response && e.response.status === 403) 
+            console.log("403: expired API key") 
+        throw Error(`${e.response ? e.response.status: 500}: getMatchlistByPuuid failed`);
+    }
 };
 
 let getMatchlistBySummoner = async (summonerName, region) => {
@@ -49,12 +56,15 @@ let getMatchlistBySummoner = async (summonerName, region) => {
             return matches;
         } catch (e) {
             console.log(e);
+            throw Error(`Failed to retrieve match Ids for ${puuid}`);
         }
-    } catch (e) { console.log(e) };
-
-    return matchList;
+    } catch (e) {
+        console.log(e);
+        throw Error(`Failed to retrieve summoner ${summonerName}`);
+        };
 };
 
+// convert list of matchIds to match data type objects
 let matchlistToMatchDTO = async (matchList) => {
     if (!matchList || !Array.isArray(matchList) || matchList.length === 0)
         throw TypeError("Invalid matchlist");

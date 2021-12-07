@@ -1,7 +1,8 @@
 const express = require('express')
 const {getMatchlistByPuuid, getSummonerByName, getMatchById, getMatchlistBySummoner} = require('./data')
 const {strValid, regValid} = require('./util');
-const cors = require('cors')
+const cors = require('cors');
+const { DDragon } = require('@fightmegg/riot-api');
 
 const app = express();
 const router = express.Router();
@@ -79,14 +80,35 @@ router.get('/matchlistBySummoner/:summonerName', async (req, res) => {
                 );
             }
         }
-        return res.json({data: result});
+        return res.json(result);
     } catch (e) {
-        console.log(e);
         return res.status(e.response ? e.response.status : 500).json(
             {error: e}
         );
     }
 });
+
+router.get('/champs', async ( _ , res) => {
+    const ddragon = new DDragon();
+    try {
+        const { data } = await ddragon.champion.all();
+        return res.json(data);
+    } catch (e) {
+        return res.status(e.response ? e.response.status : 404).json({error: "Champion data not available"});
+    }  
+});
+
+router.get('/champs/:championName', async (req,res) => {
+    const championName = req.params.championName;
+    const ddragon = new DDragon();
+    try {
+        const {data} = await ddragon.champion.byName({championName});
+        return res.json(data[championName]);
+    } catch (e) {
+        console.log(e);
+        return res.status(e.response ? e.response.status : 404).json({error: "Champion data not available"});
+    }
+});  
 
 app.use(router);
 

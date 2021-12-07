@@ -15,7 +15,7 @@ function App() {
         <div className="App">
         <header className="App-header">
             <p>
-            League of Legends Match History
+            LoL Match Analyzer
             </p>
         </header>
         </div>
