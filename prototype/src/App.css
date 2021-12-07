@@ -1,0 +1,234 @@
+:root {
+  --primary-color: #c28f2c;
+  --secondary-color: #262e69;
+  --teritiary-color: #1b2049;
+  --quarternary-color: #ccc9dc;
+  --lose: #e090d4;
+  --win: #7fc7a8; 
+}
+
+html {
+  background-color: var(--teritiary-color);
+}
+
+.App {
+  text-align: center;
+}
+
+.logo {
+  pointer-events: none;
+  align-self: center;
+  margin: 1rem;
+}
+
+.Champ-img-container {
+  max-width: 128px;
+}
+
+.win {
+  background-color: var(--win);
+}
+
+.lose {
+  background-color: var(--lose);
+}
+
+.Champ-img {
+  width:100%;
+  object-fit: contain;
+}
+
+header > p { 
+  font-weight: bolder;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Error {
+  color: var(--primary-color);
+  font-weight: bolder;
+}
+
+.App-header {
+  background-color: var(--primary-color);
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--quarternary-color);
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--secondary-color);
+}
+
+.Load-gif {
+  max-width: 64px;
+}
+
+.Loading {
+  color: var(--quarternary-color);
+}
+
+.Description {
+  margin: 0 25% 0 25%;
+  color: var(--quarternary-color);
+}
+
+.Summoner-search {
+  background-color: var(--secondary-color);
+  color: var(--quarternary-color);
+  display: flex;
+  flex-direction: column;
+  /* justify-items: center; */
+  align-items: center;
+  width: 100%;
+}
+
+.matchlist {
+  background-color: var(--teritiary-color);
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.Kda {
+  min-width: 110px;
+}
+
+.Other-stats {
+  margin: 0 2.5% 0 2.5%;
+  min-height: 1vh;
+}
+
+.Other-stats > table, tr, th, td {
+  border: 1px solid var(--teritiary-color);
+}
+
+/* .Stats-table > tr {
+  padding: 5px;
+} */
+
+.Stats-table {
+  min-height: 20vh;
+}
+
+td {
+  padding: 8px
+}
+
+.Stat-counts {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.Kda-ratio {
+  font-size: small;
+  font-style:italic;
+}
+
+.Match-summary {
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: row;
+  justify-items: stretch;
+  /* align-items: center; */
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+.Match-summary-expanded {
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: row;
+  justify-items: left;
+  /* align-items: center; */
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 65%;
+}
+
+.Details-button {
+  /* justify-self: stretch; */
+  max-width:5em;
+}
+
+.win {
+  background-color: var(--win);
+}
+
+.lose {
+  background-color: var(--lose);
+}
+
+.Analysis {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Good-tag {
+  font-size: small;
+  background-color: #ceffbf;
+}
+
+.Bad-tag {
+  font-size:small;
+  background-color: #EFBFFF;
+}
+
+
+.Game-outcome {
+  font-weight: bold;
+}
+
+.error input[type="text"] {
+  border: 1px dashed red;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 15px 0;
+  background-color: var(--quarternary-color);
+  border: 1px solid var(--teritiary-color);
+  transition-duration: 0.2s;
+}
+
+input[type="text"]:focus {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+}
+
+input[type="submit"] {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: 1px solid var(--teritiary-color);
+  color: var(--secondary-color);
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
+input[type="submit"]:hover {
+  color: var(--teritiary-color);
+  background-color: var(--primary-color);
+}
+
+input[type="submit"]:active {
+  color: var(--primary-color);
+  background-color: var(--teritiary-color);
+  border: 1px solid var(--primary-color);
+}
